@@ -8,9 +8,28 @@
 import SwiftUI
 
 struct ContentView: View {
+    var gradient = Gradient(colors: [.blue, .pink, .purple, .orange])
+    
     var body: some View {
-        Text("Hello, World!")
-            .padding()
+        Gauge(
+            value: 33,
+            in: 0.0 ... 100.0,
+            label: {
+                Text("Speed")
+            },
+            currentValueLabel: {
+                Text("42")
+                    .foregroundColor(.green)
+            },
+            minimumValueLabel: {
+                Text("0")
+                    .foregroundColor(.green)
+            },
+            maximumValueLabel: {
+                Text("100")
+                    .foregroundColor(.green)
+            }
+        ).gaugeStyle(CircularGaugeStyle(tint: gradient))
     }
 }
 
